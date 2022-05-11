@@ -1,0 +1,29 @@
+﻿@model RentNChillMovies.Models.ProducerViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this producer?</h3>
+<div>
+    <div class="card col-sm-12 mb-3 mx-auto">
+        <img class="card-img-top img-fluid img-thumbnail mx-auto" style="max-height:400px; max-width:300px" src="@Url.Content(Model.Producer.ProducerImage)" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">
+                @Html.DisplayFor(model => model.Producer.ProducerFirstName)
+                @Html.DisplayFor(model => model.Producer.ProducerLastName)
+            </h4>
+            <p class="card-text">
+                @Html.DisplayFor(model => model.Producer.ProducerBio)
+            </p>
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Producer.ProducerId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a style="color: white" asp-action="Index">Back to List</a>
+    </form>
+</div>

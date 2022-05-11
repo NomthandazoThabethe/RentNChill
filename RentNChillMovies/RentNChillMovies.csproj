@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-RentNChillMovies-8F2EF15E-8D0A-4800-A786-C96BE73A7A30</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Data\**" />
+    <Compile Remove="Views\NewFolder1\**" />
+    <Content Remove="Areas\Identity\Data\**" />
+    <Content Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="Areas\Identity\Data\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <None Remove="Areas\Identity\Data\**" />
+    <None Remove="Views\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\Account\Manage\user.cs" />
+    <Compile Remove="Areas\Identity\Pages\Account\Manage\UserManagr.cs" />
+    <Compile Remove="Data\CVVValidationDemo.cs" />
+    <Compile Remove="Data\Migrations\20210923134123_add roles.cs" />
+    <Compile Remove="Data\Migrations\20210923134123_add roles.Designer.cs" />
+    <Compile Remove="Migrations\20211005115608_User table changes.cs" />
+    <Compile Remove="Migrations\20211005115608_User table changes.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Rental\Create.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\producerThumbnails\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap-datepicker\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\jquery-idletimer\jquery-idletimer.sln" />
+  </ItemGroup>
+
+</Project>

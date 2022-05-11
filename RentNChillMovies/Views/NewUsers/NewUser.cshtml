@@ -1,0 +1,60 @@
+﻿
+@model RentNChillMovies.ViewModels.NewUserVM
+@{
+    ViewData["Title"] = "Details";
+    var roles = (List<IdentityRole>)ViewData["roles"];
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+ 
+
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+
+
+
+<h1>Create a New User</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="User.FirstName"></label>
+                <input asp-for="User.FirstName" class="form-control" />
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName"></label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email"></label>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+                    <label asp-for="Name">Role</label>
+                    <select asp-for="Name" class="form-control" asp-items='new SelectList(roles, "Id", "Name")'></select>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+            
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a style="color: white" asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

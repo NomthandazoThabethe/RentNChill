@@ -1,0 +1,52 @@
+﻿@model RentNChillMovies.Models.ProducerViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+
+
+<h1>Details About Producer</h1>
+<div class="row" style="color: white;">
+    <div class="column" style="background-color: #082b3b; text-align: center;">
+        <a asp-controller="Producer" asp-action="Index">
+            <img class="card-img-top img-fluid img-thumbnail mx-auto" style="max-height:400px; max-width:300px" src="@Url.Content(Model.Producer.ProducerImage)" alt="Card image cap">
+        </a>
+    </div>
+    <div class="column" style="background-color: #082b3b">
+        <h3 class="card-title" style="color: aquamarine;">
+            <strong>
+                @Html.DisplayFor(model => model.Producer.ProducerFirstName)
+                @Html.DisplayFor(model => model.Producer.ProducerLastName)
+            </strong>
+        </h3>
+        <p class="card-text">
+            @Html.DisplayFor(model => model.Producer.ProducerBio)
+        </p>
+        <h4 class="title" style="color: aquamarine;">
+            Movies:
+        </h4>
+        <p class="card-text">
+            @foreach (var item in Model.Movies)
+            {
+                <a style="color: aquamarine;" asp-controller="Movies" asp-action="Details" asp-route-id="@item.MovieId">
+                    @Html.DisplayFor(modelitem => item.Movie.MovieTitle)
+                </a>
+            }
+        </p>
+    </div>
+</div>
+
+
+<div>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+    {
+        <a style="color: white" asp-action="Edit" asp-route-id="@Model.Producer.ProducerId">Edit</a>
+    }
+    <a style="color: white" asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RentNChillMovies.Models.Actor>
+
+@{
+    ViewData["Title"] = "Actors";
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+
+
+<div class="col-sm-12">
+    <h1>Actors</h1>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+    {
+        <p>
+            <a class="btn btn-primary" asp-action="Create">Create New</a>
+        </p>
+    }
+</div>
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3 mb-3">
+            <div class="card">
+                <a asp-controller="Actor" asp-action="Details" asp-route-id="@item.ActorId">
+                    <img class="card-img-top" src="@Url.Content(item.ActorImage)" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <a class="h4" asp-action="Details" asp-route-id="@item.ActorId">
+                        <h4 class="card-title btn-link">
+                            @Html.DisplayFor(modelItem => item.ActorName)
+                            @Html.DisplayFor(modelItem => item.ActorLastName)
+                        </h4>
+                    </a>
+
+                </div>
+                <div class="card-footer">
+
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                    {
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ActorId">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ActorId">Delete</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

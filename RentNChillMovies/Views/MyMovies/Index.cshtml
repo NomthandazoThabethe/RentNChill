@@ -1,0 +1,93 @@
+﻿@model RentNChillMovies.ViewModels.MyMoviesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+
+<h1>My Movies</h1>
+/
+
+
+<div class="card-deck">
+    @foreach (var item in Model.Movies)
+    {
+        <div class="col-sm-3 mb-3">
+            <div class="card">
+                <a asp-controller="Movies" asp-action="Details">
+                    <img class="card-img-top" src="@Url.Content(item.Movie.MovieThumbnail)" alt="Card image">
+                </a>
+                <div class="card-body" style="width: 100px; height: 100px;">
+                    <h4 class="card-title btn-link">
+                        @Html.DisplayFor(modelItem => item.Movie.MovieTitle)
+                    </h4>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <a class="btn btn-success">Watch</a>
+                <a class="btn btn-warning" asp-controller="Movies" asp-action="Details" asp-route-id="@item.MovieId">Review</a>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie.RentalEndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie.IsTrasactionComplete)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movie.Movie.MovieTitle)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Movies) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalEndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsTrasactionComplete)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.MovieTitle)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserMovieId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.UserMovieId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UserMovieId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+

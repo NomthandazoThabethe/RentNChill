@@ -1,0 +1,48 @@
+﻿@model RentNChillMovies.Models.Producer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h1>Producer</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProducerFirstName" class="control-label"></label>
+                <input asp-for="ProducerFirstName" class="form-control" />
+                <span asp-validation-for="ProducerFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerLastName" class="control-label"></label>
+                <input asp-for="ProducerLastName" class="form-control" />
+                <span asp-validation-for="ProducerLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerBio" class="control-label"></label>
+                <input asp-for="ProducerBio" class="form-control" />
+                <span asp-validation-for="ProducerBio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerThumbnail" class="control-label"></label>
+                <input asp-for="ProducerThumbnail" class="form-control-file" type="file" accept="image/*" />
+                <span asp-validation-for="ProducerThumbnail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="color: white" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

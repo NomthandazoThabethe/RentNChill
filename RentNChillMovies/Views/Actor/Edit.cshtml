@@ -1,0 +1,48 @@
+﻿@model RentNChillMovies.Models.Actor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Actor</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ActorId" />
+            <div class="form-group">
+                <label asp-for="ActorName" class="control-label"></label>
+                <input asp-for="ActorName" class="form-control" />
+                <span asp-validation-for="ActorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActorLastName" class="control-label"></label>
+                <input asp-for="ActorLastName" class="form-control" />
+                <span asp-validation-for="ActorLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActorBio" class="control-label"></label>
+                <textarea asp-for="ActorBio" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="ActorBio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActorThumbnail" class="control-label"></label>
+                <input asp-for="ActorThumbnail" class="form-control-file" type="file" accept="image/*" />
+                <span asp-validation-for="ActorThumbnail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="color: white" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

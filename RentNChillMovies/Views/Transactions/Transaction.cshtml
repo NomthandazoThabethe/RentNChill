@@ -1,0 +1,47 @@
+﻿@model RentNChillMovies.ViewModels.TransactionViewModel
+
+@{
+    ViewData["Title"] = "Transaction";
+
+    DateTime startTime = DateTime.Today;
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+
+<h1>Transaction Page</h1>
+
+<h4>Click Confirm Transaction To Checkout</h4>
+<hr />
+
+<div class="column">
+    <form asp-action="Transaction">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div> 
+            <h3 class="card-title">
+                <strong>Movie:@Html.DisplayFor(model => model.Movie.MovieTitle)</strong>
+            </h3>
+            <p class="card-text" style="color:white;">
+                Price: @Html.DisplayFor(model => model.Movie.Price)<br />
+                Start Date: @ViewData["StartDate"] <br />
+                End Date: @ViewData["EndDate"]<br />
+            </p>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Confirm Transaction" class="btn btn-primary" />
+            <a class="btn btn-danger" asp-controller="Movies" asp-action="Index">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+   
+}

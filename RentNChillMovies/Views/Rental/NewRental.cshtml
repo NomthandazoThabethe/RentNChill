@@ -1,0 +1,55 @@
+﻿@model RentNChillMovies.ViewModels.RentalViewModel
+
+@{
+    ViewData["Title"] = "NewRental";
+
+    DateTime startTime = DateTime.Today;
+}
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@using Microsoft.AspNetCore.Identity
+
+<h1>Rental</h1>
+
+<h4>Rent Movie</h4>
+<hr />
+<div class="card col-sm-12 mb-3 mx-auto " style="color: white;">
+    <div class="row">
+        <div class="column">
+            <div class="col-md-4">
+                <form asp-action="NewRental" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div>
+                        <h3 class="card-title">
+                            <strong>@Html.DisplayFor(model => model.Movie.MovieTitle)</strong>
+                        </h3>
+                        <p>@Html.DisplayFor(model => model.Movie.MovieDescription)</p>
+                        <p class="card-text">
+                            Price: @Html.DisplayFor(model => model.Movie.Price)<br />
+                            Start Date: @ViewData["StartDate"] <br />
+                            End Date: @ViewData["EndDate"]<br />
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" value="Rent" class="btn btn-primary"/>
+ 
+                        &nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-danger" asp-controller="Movies" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="column">
+           <img class="card-img-top img-fluid img-thumbnail mx-auto" style="max-height:400px; max-width:300px" src="@Url.Content(Model.Movie.MovieThumbnail)" alt="Card image cap">
+
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

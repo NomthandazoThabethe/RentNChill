@@ -1,0 +1,119 @@
+﻿@model RentNChillMovies.Models.MovieViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Movie</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Movie.MovieId"/>
+            <div class="form-group">
+                <label asp-for="Movie.GenreId" class="control-label"></label>
+                <select asp-for="Movie.GenreId" class="form-control" asp-items="ViewBag.GenreId"></select>
+                <span asp-validation-for="Movie.GenreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.MovieTitle" class="control-label"></label>
+                <input asp-for="Movie.MovieTitle" class="form-control"/>
+                <span asp-validation-for="Movie.MovieTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.ReleaseDate" class="control-label"></label>
+                <input asp-for="Movie.ReleaseDate" class="form-control"/>
+                <span asp-validation-for="Movie.ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Price" class="control-label"></label>
+                <input asp-for="Movie.Price" class="form-control"/>
+                <span asp-validation-for="Movie.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.MovieDescription" class="control-label"></label>
+                <input asp-for="Movie.MovieDescription" class="form-control"/>
+                <span asp-validation-for="Movie.MovieDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.AudienceCode" class="control-label"></label>
+                <input asp-for="Movie.AudienceCode" class="form-control"/>
+                <span asp-validation-for="Movie.AudienceCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.ImdbURL" class="control-label"></label>
+                <input asp-for="Movie.ImdbURL" class="form-control"/>
+                <span asp-validation-for="Movie.ImdbURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.RottenTomatoesURL" class="control-label"></label>
+                <input asp-for="Movie.RottenTomatoesURL" class="form-control"/>
+                <span asp-validation-for="Movie.RottenTomatoesURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Language" class="control-label"></label>
+                <input asp-for="Movie.Language" class="form-control"/>
+                <span asp-validation-for="Movie.Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.ImageFile" class="control-label"></label>
+                <input asp-for="Movie.ImageFile" class="form-control-file" accept="image/*"/>
+                <span asp-validation-for="Movie.ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.MovieTrailer" class="control-label"></label>
+                <input asp-for="Movie.MovieTrailer" class="form-control"/>
+                <span asp-validation-for="Movie.MovieTrailer" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Movie.IsAvailable"/> @Html.DisplayNameFor(model => model.Movie.IsAvailable)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Actor</label>
+                <select class=" form-control  myselect" multiple="multiple" asp-for="Actor" name="Actors">
+                    @foreach (var i in Model.Actors)
+                    {
+                    <option type="onclick" id="@i.ActorId)" value="@i.ActorId"> @i.ActorFullName</option>     
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Producer</label>
+                <select asp-for="Producer" class=" form-control myselect1" name="producers">
+            @foreach (var i in Model.Producers)
+            {
+                <option id="@i.ProducerId)" value="@i.ProducerId">@i.ProducerFullName</option>
+            }
+        </select>
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a style="color: white" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @*<script type="text/javascript"> 
+      $(".myselect").select2({
+          theme: "classic",
+          placeholder: "Select"
+      });
+        $(".myselect1").select2({
+            placeholder: "Select Producer"
+        });
+    </script>*@
+
+
+}
+
